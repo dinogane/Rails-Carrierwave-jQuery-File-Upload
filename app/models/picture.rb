@@ -6,7 +6,7 @@ class Picture < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
 
-  after_update :crop_image
+  after_update :reprocess_image, :if => :cropping?
 
   def to_jq_upload
     {
@@ -20,8 +20,17 @@ class Picture < ActiveRecord::Base
     }
   end
 
-  def crop_image
-    image.recreate_versions! if crop_x.present?
+  def cropping?
+      !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  def reprocess_image
+    #current_image = Magick::ImageList.new(self.image.current_path)
+    #cropped_image = current_image.crop(crop_x, crop_y, crop_h, crop_w)
+    #cropped_image.write(self.image.current_path)
+    #self.image.recreate_versions!
+
+    image.recreate_versions!
     current_version = self.image.current_path
     large_version = "#{Rails.root}/public" + self.image.versions[:large].to_s
 

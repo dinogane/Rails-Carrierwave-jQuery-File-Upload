@@ -6,7 +6,42 @@
     </div>
   </div>
   
-    <%= image_tag @picture.image.large.url, :id => 'cropbox' %>
+  <!-- This is the image we're attaching Jcrop to -->
+  <table cellpadding="0" cellspacing="0" border="0">
+  <tr>
+  <td>
+      Preview
+  </td>
+  <td>
+      Thumb
+  </td>
+  </tr>
+  <tr>
+  <td>
+      <%= image_tag(@picture.image.preview.url) %>
+  </td>
+  <td>
+      <%= image_tag(@picture.image.thumb.url)%>
+  </td>
+  </tr>
+  </table>
+
+
+  <!-- This is the image we're attaching Jcrop to -->
+  <table cellpadding="0" cellspacing="0" border="0">
+  <tr>
+  <td>
+      <%= image_tag(@picture.image.large.url, :id => 'target') %>
+  </td>
+  <td>
+  <div style="width:100px;height:100px;overflow:hidden;margin-left:5px;">
+      <%= image_tag(@picture.image.large.url, :id => 'preview')%>
+  </div>
+
+  </td>
+  </tr>
+  </table>
+
   
   <% %w[x y w h].each do |attribute| %>
     <%= f.hidden_field "crop_#{attribute}" %>
