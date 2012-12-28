@@ -68,14 +68,19 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :crop
   end
 
-  version :preview do
+  version :medium, :from_version => :large do
     process :crop
-    resize_to_limit(690, 518)
+    resize_to_limit(280, 362)
   end
 
-  version :thumb do
+  version :small, :from_version => :medium do
     process :crop
-    resize_to_fill(100, 100)
+    resize_to_fill(155, 200)
+  end
+
+  version :thumb, :from_version => :small do
+    process :crop
+    resize_to_fill(100, 130)
   end
 
  

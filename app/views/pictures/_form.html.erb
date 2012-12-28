@@ -5,27 +5,8 @@
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
   </div>
-  
-  <!-- This is the image we're attaching Jcrop to -->
-  <table cellpadding="0" cellspacing="0" border="0">
-  <tr>
-  <td>
-      Preview
-  </td>
-  <td>
-      Thumb
-  </td>
-  </tr>
-  <tr>
-  <td>
-      <%= image_tag(@picture.image.preview.url) %>
-  </td>
-  <td>
-      <%= image_tag(@picture.image.thumb.url)%>
-  </td>
-  </tr>
-  </table>
 
+<h2>Croppable Large Verion</h2>
 
   <!-- This is the image we're attaching Jcrop to -->
   <table cellpadding="0" cellspacing="0" border="0">
@@ -34,7 +15,7 @@
       <%= image_tag(@picture.image.large.url, :id => 'target') %>
   </td>
   <td>
-  <div style="width:100px;height:100px;overflow:hidden;margin-left:5px;">
+  <div style="width:100px;height:130px;overflow:hidden;margin-left:5px;">
       <%= image_tag(@picture.image.large.url, :id => 'preview')%>
   </div>
 
@@ -68,3 +49,34 @@
       });
     });
 </script>
+
+<br/>
+<br/>
+
+<h2>Alternate Versions</h2>
+
+  <!-- This is the image we're attaching Jcrop to -->
+  <table cellpadding="2" cellspacing="2" border="0">
+  <tr>
+  <td style="text-align:center;">
+      Medium
+  </td>
+  <td style="text-align:center;">
+      Small
+  </td>
+  <td style="text-align:center;">
+      Thumb
+  </td>
+  </tr>
+  <tr>
+  <td>
+      <%= image_tag(@picture.image.medium.url) %>
+  </td>
+  <td>
+      <%= image_tag(@picture.image.small.url)%>
+  </td>
+  <td>
+      <%= image_tag(@picture.image.thumb.url)%>
+  </td>
+  </tr>
+  </table>

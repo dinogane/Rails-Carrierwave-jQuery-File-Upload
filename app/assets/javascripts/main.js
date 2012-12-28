@@ -20,7 +20,7 @@ $(function () {
     $('#target').Jcrop({
       onChange: updatePreview,
       onSelect: updatePreview,
-      aspectRatio: 1
+      aspectRatio: (8.5/11) // US Letter Size
     },function(){
       // Use the API to get the real image size
       var bounds = this.getBounds();
@@ -35,7 +35,7 @@ $(function () {
       if (parseInt(c.w) > 0)
       {
         var rx = 100 / c.w;
-        var ry = 100 / c.h;
+        var ry = (100 * (11/8.5)) / c.h;
 
         $('#preview').css({
           width: Math.round(rx * boundx) + 'px',
