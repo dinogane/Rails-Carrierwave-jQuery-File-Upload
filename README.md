@@ -7,6 +7,8 @@ More information about [jQuery File Upload](http://blueimp.github.com/jQuery-Fil
 We use [slimbox2](http://www.digitalia.be/software/slimbox2) plugin for viewing pictures.
 And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing pictures.
 
+Minor modifications from [n0ne's version](https://github.com/n0ne/Rails-Carrierwave-jQuery-File-Upload) to implement JCrop [thumbnail preview](http://deepliquid.com/projects/Jcrop/demos.php?demo=thumbnail) and use Postgres, to support Heroku.
+
 ## Getting Started
 
 * Clone git:
