@@ -64,13 +64,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  # This is the original version
   version :large do
     process :crop
   end
 
+  # This is the version to be used for US Letter size printing
+  version :cover, :from_version => :large do
+    process :crop
+    resize_to_fill(2550, 3300)
+  end
+
   version :medium, :from_version => :large do
     process :crop
-    resize_to_limit(280, 362)
+    resize_to_fill(280, 362)
   end
 
   version :small, :from_version => :medium do
